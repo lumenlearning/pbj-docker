@@ -1,0 +1,4 @@
+# Runtime files
+/.idea/
+/target/
+/application.properties
