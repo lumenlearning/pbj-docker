@@ -1,0 +1,72 @@
+version: '2'
+
+services:
+
+  web:
+    container_name: pbj_web
+    depends_on:
+      - db
+    build:
+      context: web/
+      dockerfile: Dockerfile
+    image: pbj_web
+    volumes:
+      - ~/Sites/pbj:/var/www/html
+    links:
+      - db:pbj_db
+      - redis:pbj_redis
+    ports:
+      - "80:80"
+
+    restart: unless-stopped
+    privileged: false
+    stdin_open: false
+    tty: false
+
+  db:
+    container_name: pbj_db
+    build:
+      context: db/
+    image: pbj_db
+    volumes:
+      - ~/docker-data/pbj-db:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+    restart: unless-stopped
+    privileged: false
+    stdin_open: false
+    tty: false
+
+  redis:
+    container_name: pbj_redis
+    build:
+      context: redis/
+    image: pbj_redis
+    ports:
+      - "6380:6379"
+
+    restart: unless-stopped
+    privileged: false
+    stdin_open: false
+    tty: false
+
+  install_wordpress:
+    container_name: pbj_install_wordpress
+    depends_on:
+      - db
+    build:
+      context: install_wordpress/
+      dockerfile: Dockerfile
+    image: pbj_install_wordpress
+    volumes:
+      - ~/Sites/pbj:/pbj
+      - ~/.pantheon:/root/.pantheon
+      - ~/.ssh:/root/.ssh
+    links:
+      - db:pbj_db
+
+    restart: unless-stopped
+    privileged: false
+    stdin_open: false
+    tty: false
