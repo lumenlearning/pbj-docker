@@ -5,12 +5,12 @@ Provide a local development environment for the Lumen PBJ application.
 # Requirements
 
 - Docker 17.03
-- Pantheon config file
+- The candela repo cloned from Pantheon
 
 If you are on a Mac, you will need to use the newer "Docker for Mac" instead of
 "Docker Toolbox".
 
-# Pantheon config file
+## Obtaining the Pantheon repository URL
 
 Log into Pantheon and obtain the repo URL for PBJ.
 
@@ -22,11 +22,6 @@ Click:
 1. "Connection Info" button
 1. Copy the "SSH clone URL" string
 
-Create a file on your laptop, in a terminal window with:
-
-	$ mkdir -p ~/.pantheon
-	$ echo 'candela_git_url=<SSH clone URL here>' > ~/.pantheon/candela_config.ini
-
 # Installation
 
 ## Step 1: Install Docker
@@ -35,7 +30,13 @@ You will need to download and install Docker.
 
 - [https://www.docker.com/products/docker](https://www.docker.com/products/docker)
 
-## Step 2: Build and start the PBJ development environment
+## Step 2: Clone the Pantheon candela repository
+
+Clone the repository to your laptop to `~/Sites/pbj`.
+
+	$ git clone <repo_url> ~/Sites/pbj
+
+## Step 3: Build and start the PBJ development environment
 
 This will build the Docker images and containers used to serve run project.
 
@@ -45,7 +46,7 @@ This will build the Docker images and containers used to serve run project.
 The first time this command is used, it will take a while to complete. It will be downloading
 several Debian packages for the various server-side dependencies required by PBJ.
 
-## Step 3: Enjoy!
+## Step 4: Enjoy!
 
 Your project files are now located in: `~/Sites/pbj`
 Your database files are located in: `~/Sites/pbj-db`

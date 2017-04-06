@@ -3,37 +3,18 @@
 set -euo pipefail
 
 # Don't do anything if Wordpress is already installed and configured.
-if [ -e "/pbj/wp-config.php" ]; then
+if [ -e "/pbj/wp-config-local.php" ]; then
 	echo "Wordpress is installed!"
 	while true; do
 		sleep 60
 	done
 fi
 
-# Wait for the user to clear out ~/Sites/pbj
-until [ "$(ls -Ala /pbj | wc -l)" == 3 ]; do
-	echo
-	echo '**** Your ~/Sites/pbj directory is NOT empty! Unable to clone Candela from Pantheon.'
-	echo
-	sleep 10
-done
-
 echo
 echo '**** Beginning Candela installation...'
 echo
 
 sleep 10
-
-# Git is not provided by this container
-apt-get update
-apt-get install -y git
-
-# Clone Candela from Pantheon
-GIT_URL=`grep candela_git_url /root/.pantheon/candela_config.ini | cut -f2 -d=`
-git clone "${GIT_URL}" /pbj
-
-# We won't be using Git again
-apt-get purge -y git
 
 # Setup local Wordpress config - DB config
 cd /pbj
@@ -72,6 +53,10 @@ sed -i "/'NONCE_SALT'/c\\""${config_line}" /pbj/wp-config-local.php
 
 rm /tmp/wp_auth.txt
 
+
+echo
+echo '*** Candela is installed!'
+echo
 
 # FIXME: Remove after testing
 while true; do
