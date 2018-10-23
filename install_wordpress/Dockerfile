@@ -1,8 +1,8 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        curl ca-certificates mysql-client php7.0-cli php7.0-mysql && \
+        curl ca-certificates mysql-client php7.2-cli php7.2-mysql && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
