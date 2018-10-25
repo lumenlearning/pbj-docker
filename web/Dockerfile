@@ -4,15 +4,13 @@ RUN apt-get update && \
 	apt-get install -y tzdata && \
 	apt-get install -y --no-install-recommends \
 		apache2 ssl-cert libapache2-mod-php7.2 php7.2-mysql php-redis
-#		apache2 libapache2-mod-php7.0 php7.0-mysql php7.0-oauth php-redis && \
-#   apt-get clean && \
-#	  rm -rf /var/lib/apt/lists/*
 
+# enable Apache modrewrite and SSL
 RUN a2enmod rewrite && \
 	a2enmod ssl && \
 	a2ensite default-ssl
 
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# Update apache conf to allow subdirectories
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 
