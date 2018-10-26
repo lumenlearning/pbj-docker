@@ -51,11 +51,12 @@ If you need to stop your Docker session you can run `/.stop-everything.sh` or `.
 ## Step 4: Enjoy!
 
 Your project files are now located in: `~/Sites/pbj`
+	- Note: Your WP config will be updated in `wp-config-local.php` and that's where you can check out and tweak and WP settings
 Your database files are located in: `~/Sites/pbj-db`
 
 Your Wordpress website is reachable at: [http://localhost:80/](http://localhost:80/) and it will take you through the Wordpress install (if the port is being tricky which sometimes happened to me at `8080` hitting `http://localhost/wp-admin` also does the trick).
 
-If you need to connect directly to the database, it will be available at localhost:3307.
+If you need to connect directly to the database, it will be available at localhost:3307 (user `pbj` password `pbj`).
 
 ## Step 5: Configure WP to mirror your Panthen environment
 To mirror the Pantheon environment and get plugins running you have to go through a few steps.
@@ -64,7 +65,7 @@ To mirror the Pantheon environment and get plugins running you have to go throug
 - Next we want to install Multisite which is required for Pressbooks. Unfortunately this isn't something that can be part of the Docker container as it requires WP as well as local tweaks.
     - Go to Tools > Network Setup in WP and click Install
     - Take note of correct settings for your WP install at ~/Sites/pbj
-    - Update your wp-config-local with the correct multisite values provided
+    - Update your `wp-config-local.php` with the correct multisite values provided
     - Update .htaccess file with correct values provided
     - After updating if you refresh WP you may be booted out, once you log back in Multisite should be enabled (you can see this if you look in main menu and you have option to add a new site)
 	- Install Pressbooks plugin from Plugin options (in Admin settings, all plugins should already be there that we part of repo)
