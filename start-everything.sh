@@ -10,8 +10,4 @@ if [ "$PROCS" != "0" ]; then
   sudo apachectl stop
 fi
 
-# Start PBJ containers
-mkdir -p ~/pbj
-mkdir -p ~/pbj-db
-
 docker-compose up
