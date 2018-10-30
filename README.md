@@ -80,4 +80,4 @@ To mirror the Pantheon environment and get plugins running you have to go throug
 ```
 php_value upload_max_filesize 256M
 ```
-To the `htaccess` file in your local PBJ directiory (~/Sites/pbj)
+To the `.htaccess` file in your local PBJ directory (~/Sites/pbj)
