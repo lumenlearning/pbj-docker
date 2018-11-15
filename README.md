@@ -75,3 +75,9 @@ To mirror the Pantheon environment and get plugins running you have to go throug
 - With plugins and themes enabled now you should be able to add / import books and have things look the same between the local and Pantheon environment you cloned down
 - Note: If you upgrade plugins things may change or break (this could be good if you are testing)
 
+## Step 5: Potential Gotcha's
+- When importing books into PBJ you may get an error that max file size in `php.ini` has been exceeded. This can be fixed by adding:
+```
+php_value upload_max_filesize 256M
+```
+To the `.htaccess` file in your local PBJ directory (~/Sites/pbj)
