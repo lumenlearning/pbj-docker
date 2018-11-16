@@ -32,9 +32,11 @@ You will need to download and install Docker.
 
 ## Step 2: Clone the Pantheon candela repository
 
-Clone the repository to your laptop to `~/Sites/pbj` (likely want to tweak the copied Github clone URL to copy the repo here as opposed to `candela`).
+Clone the copied Pantheon repository to your laptop to `~/Sites/pbj` (likely want to tweak the copied Github clone URL to copy the repo to `pbj` folder as opposed to `candela`).
 
 	$ git clone <repo_url> ~/Sites/pbj
+
+Please note that a cloned repo from Pantheon is not the same as our repo `https://github.com/lumenlearning/pbj`. If you are introducing changes that need to go through PR review, you will want to apply any changes to that repo after working and testing in this cloned Pantheon repo (or alias our pbj github repo to `~/Sites/pbj`, though if that will work is TBD)
 
 ## Step 3: Build and start the PBJ development environment
 
