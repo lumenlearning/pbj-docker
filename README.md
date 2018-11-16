@@ -82,4 +82,5 @@ To mirror the Pantheon environment and get plugins running you have to go throug
 ```
 php_value upload_max_filesize 256M
 ```
-To the `.htaccess` file in your local PBJ directory (~/Sites/pbj)
+To the `.htaccess` file in your local PBJ directory (`~/Sites/pbj`)
+- Sometimes there is a switcheroo between `http` and `https` when navigating in PBJ - in those cases it can look like you're logged out but if you head to `localhost/wp-admin` it will usually do the trick. I think this will be fixed by our rewritting in the db of http to https links.
