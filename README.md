@@ -5,14 +5,14 @@ Provide a local development environment for the Lumen PBJ application.
 # Requirements
 
 - Docker 17.03
-- The candela repo cloned from Pantheon
+- The candela repo cloned from Pantheon or from our github PBJ repo
 
 If you are on a Mac, you will need to use the newer "Docker for Mac" instead of
 "Docker Toolbox".
 
-## Obtaining the Pantheon repository URL
+## Optional: Obtain the Pantheon repository URL
 
-Log into Pantheon and obtain the repo URL for PBJ.
+If you want to use the Pantheon PBJ repo log into Pantheon and obtain the repo URL for the environment you want to use Docker with (or use our github repo as noted in step 2).
 
 Click:
 1. Organizations
@@ -32,11 +32,11 @@ You will need to download and install Docker.
 
 ## Step 2: Clone the Pantheon candela repository
 
-Clone the copied Pantheon repository to your laptop to `~/Sites/pbj` (likely want to tweak the copied Github clone URL to copy the repo to `pbj` folder as opposed to `candela`).
+Clone the copied Pantheon repository or our local github repo (`https://github.com/lumenlearning/pbj`) to your laptop into `~/Sites/pbj`.
 
 	$ git clone <repo_url> ~/Sites/pbj
 
-Please note that a cloned repo from Pantheon is not the same as our repo `https://github.com/lumenlearning/pbj`. If you are introducing changes that need to go through PR review, you will want to apply any changes to that repo after working and testing in this cloned Pantheon repo (or alias our pbj github repo to `~/Sites/pbj`, though if that will work is TBD)
+Please note that if you use a cloned repo from Pantheon it is not connected to our repo `https://github.com/lumenlearning/pbj`. If you are introducing changes that need to go through PR review, you will want to use our github repo instead.
 
 ## Step 3: Build and start the PBJ development environment
 
