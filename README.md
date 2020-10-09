@@ -65,15 +65,21 @@ To mirror the Pantheon environment and get plugins running you have to go throug
 
 - After WP installation login with new account created
 - Next we want to install Multisite which is required for Pressbooks. Unfortunately this isn't something that can be part of the Docker container as it requires WP as well as local tweaks.
-	- Go to Tools > Network Setup in WP and click Install
-	- Take note of correct settings for your WP install at ~/Sites/pbj
-	- Update your `wp-config-local.php` with the correct multisite values provided
-	- Update .htaccess file with correct values provided
-	- After updating if you refresh WP you may be booted out, once you log back in Multisite should be enabled (you can see this if you look in main menu and you have option to add a new site)
-- Install Pressbooks plugin from Plugin options (in Admin Dashboard > Plugins, and all plugins should already be there that we part of that Pantheon repo)
-- For look and feel to be correct for PBJ you also want to install `Candela Utility` plugin. Now everything should _look_ the same in PBJ
+- If you want to use a sub-domain-based multisite setup (like our production site does):
+	- Edit your /etc/hosts to include the line: 127.0.0.1 pbj.local
+	- Go to Settings > General and change the Wordpress Address and Site Address settings to http://pbj.local 
+	- You'll need to remember to edit /etc/hosts every time you add a new Book.
+	- Go to Tools > Network Setup in WP, choose Sub-domains, and click Install
+- If you're fine using sub-directories instead:
+	- Just go to Tools > Network Setup in WP and click Install
+- Take note of correct settings for your WP install at ~/Sites/pbj
+- Update your `wp-config-local.php` with the correct multisite values provided
+- Update .htaccess file with correct values provided
+- After updating if you refresh WP you may be booted out, once you log back in Multisite should be enabled (you can see this if you look in main menu and you have option to add a new site)
+- Network Enable Pressbooks plugin from Plugin options (in Admin Dashboard > Plugins, and all plugins should already be there that we part of that Pantheon repo)
+- For look and feel to be correct for PBJ you also want to Network Enable `Candela Utility` plugin. Now everything should _look_ the same in PBJ
 - At this point you should be able to install whatever Plugins you want and all should work hopefully - you may want to do one by one as doing bulk install may error out as some plugins rely on others (such as LTI I believe)
-- For book themes to be correct you should go to Themes in your admin Dashboard and enable Pressbooks Publisher as the theme, and _then_ enable Bombadil (you may want to enable Luther as well as that is what Bombadil is built off), but pretty sure this isn't necessary). Now for any books created you should be able to use the Bombadil theme and things will be looking prettay prettay good.
+- For book themes to be correct you should go to Themes in your admin Dashboard and Network Enable Pressbooks Publisher as the theme, and _then_ Network Enable Bombadil. Now for any books created you should be able to use the Bombadil theme and things will be looking prettay prettay good.
 - With plugins and themes enabled now you should be able to add / import books and have things look the same between the local and Pantheon environment you cloned down
 - Note: If you upgrade plugins things may change or break (this could be good if you are testing)
 
